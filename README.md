@@ -1,3 +1,3 @@
 ### Maze Problem
 
-`yarn start` to runn the project.
+`yarn start` to run the project.
