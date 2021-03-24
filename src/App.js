@@ -34,17 +34,16 @@ class App extends React.Component {
   }
 
   handleGreenSprite(x, y) {
-    console.log(`x - ${x}, y- ${y}`);
     const greenSpriteCoords = this.state.greenSpriteCoords;
-
     const index = greenSpriteCoords.findIndex((coord) => coord.x === x && coord.y === y);
-
-    console.log(`index ${index}`, greenSpriteCoords);
 
     if (index === -1) return;
 
-    console.log(`x - ${x}, y- ${y}`);
     greenSpriteCoords.splice(index, 1);
+
+    if (greenSpriteCoords.length === 0) {
+      alert(`Yay! You did it in ${this.noOfMoves} moves`);
+    }
 
     this.setState({
       greenSpriteCoords: [...greenSpriteCoords],
@@ -134,11 +133,6 @@ class App extends React.Component {
     const greenSpriteCoords = this.state.greenSpriteCoords;
     const redSpriteYCoord = this.state.redSpriteYCoord;
     const redSpriteXCoord = this.state.redSpriteXCoord;
-
-    if (greenSpriteCoords.length === 0) {
-      alert(`Yay! You did it in ${this.noOfMoves} moves`);
-      return <div></div>;
-    }
 
     const board = [];
     for (let row = 0; row < noOfRows; row++) {
