@@ -16,13 +16,6 @@ class App extends React.Component {
     };
 
     this.noOfMoves = 0;
-
-    this.handleGreenSprite = this.handleGreenSprite.bind(this);
-    this.handleUpArrow = this.handleUpArrow.bind(this);
-    this.handleRightArrow = this.handleRightArrow.bind(this);
-    this.handleDownArrow = this.handleDownArrow.bind(this);
-    this.handleLeftArrow = this.handleLeftArrow.bind(this);
-    this.onKeyPressed = this.onKeyPressed.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +26,7 @@ class App extends React.Component {
     window.removeEventListener("keydown", this.onKeyPressed);
   }
 
-  handleGreenSprite(x, y) {
+  handleGreenSprite = (x, y) => {
     const greenSpriteCoords = this.state.greenSpriteCoords;
     const index = greenSpriteCoords.findIndex((coord) => coord.x === x && coord.y === y);
 
@@ -48,9 +41,9 @@ class App extends React.Component {
     this.setState({
       greenSpriteCoords: [...greenSpriteCoords],
     });
-  }
+  };
 
-  handleUpArrow() {
+  handleUpArrow = () => {
     const redSpriteYCoord = this.state.redSpriteYCoord;
     const redSpriteXCoord = this.state.redSpriteXCoord;
     if (redSpriteYCoord === 0) return;
@@ -62,9 +55,9 @@ class App extends React.Component {
     this.setState({
       redSpriteYCoord: newCoord,
     });
-  }
+  };
 
-  handleRightArrow() {
+  handleRightArrow = () => {
     const redSpriteYCoord = this.state.redSpriteYCoord;
     const redSpriteXCoord = this.state.redSpriteXCoord;
     if (redSpriteXCoord === this.props.noOfCols - 1) return;
@@ -76,9 +69,9 @@ class App extends React.Component {
     this.setState({
       redSpriteXCoord: newCoord,
     });
-  }
+  };
 
-  handleDownArrow() {
+  handleDownArrow = () => {
     const redSpriteYCoord = this.state.redSpriteYCoord;
     const redSpriteXCoord = this.state.redSpriteXCoord;
     if (redSpriteYCoord === this.props.noOfRows - 1) return;
@@ -90,9 +83,9 @@ class App extends React.Component {
     this.setState({
       redSpriteYCoord: newCoord,
     });
-  }
+  };
 
-  handleLeftArrow() {
+  handleLeftArrow = () => {
     const redSpriteYCoord = this.state.redSpriteYCoord;
     const redSpriteXCoord = this.state.redSpriteXCoord;
     if (redSpriteXCoord === 0) return;
@@ -104,9 +97,9 @@ class App extends React.Component {
     this.setState({
       redSpriteXCoord: newCoord,
     });
-  }
+  };
 
-  onKeyPressed(e) {
+  onKeyPressed = (e) => {
     const eventsToBeHandled = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
 
     const eventIndex = eventsToBeHandled.indexOf(e.key);
@@ -125,7 +118,7 @@ class App extends React.Component {
     }
 
     this.handleLeftArrow();
-  }
+  };
 
   render() {
     const noOfRows = this.props.noOfRows;
